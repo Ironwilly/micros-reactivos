@@ -19,7 +19,7 @@ public class NumerosController {
                 .delayElements(Duration.ofSeconds(1));
 
         flux.subscribe(System.out::println); 
-        
+        flux.subscribe(n -> System.out.println("Suscriber 2:"+n));
         return flux; 
     }
 
