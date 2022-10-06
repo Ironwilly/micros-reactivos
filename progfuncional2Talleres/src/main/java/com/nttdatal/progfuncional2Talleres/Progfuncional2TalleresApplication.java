@@ -16,6 +16,12 @@ public class Progfuncional2TalleresApplication implements CommandLineRunner{
 	Product product;
 	Tax tax;
 	
+	public static final String ANSI_RED = "\u001B[31m";
+	public static final String ANSI_BLACK = "\u001B[30m";
+	public static final String ANSI_BLUE = "\u001B[34m";
+	
+	
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Progfuncional2TalleresApplication.class, args);
 	}
@@ -33,12 +39,12 @@ public class Progfuncional2TalleresApplication implements CommandLineRunner{
 				
 				Optional<Double> cantidad = carro.stream()
 				.map(product -> product.price).reduce((x,y)-> x+y);
-		System.out.println("Cantidad total: "+cantidad.get()+ "€");
+		System.out.println(ANSI_BLACK+"Cantidad total: "+ANSI_RED+cantidad.get() +"€"+ANSI_BLACK);
 		
 		Optional<Double> cantidadTax = carro.stream()
 				.map(product -> product.price + ((product.price *product.tax.percent)/100))
 				.reduce((x, y)-> x+y);
-		System.out.println("La cantidad total con impuestos incluidos es: "+ cantidadTax.get() + "€");
+		System.out.println(ANSI_BLACK+"La cantidad total con impuestos incluidos es: "+ ANSI_RED+cantidadTax.get() + "€"+ANSI_BLACK);
 
 	}
 		
